@@ -168,28 +168,6 @@ transformer.transform("gems.xml", "transform.xsl", "output.xml");
 - Тести компараторів
 - Тести моделі даних
 
-## Git Репозиторій
-
-### Ініціалізація репозиторію
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: Laboratory work 2 - XML processing"
-```
-
-### Приклад commit повідомлень
-
-```bash
-git commit -m "feat: Add XSD schema with simple and complex types"
-git commit -m "feat: Implement SAX, DOM, and StAX parsers"
-git commit -m "feat: Add XML validation with XSD"
-git commit -m "feat: Implement XSL transformation for grouping by preciousness"
-git commit -m "feat: Add Comparator implementations for sorting"
-git commit -m "test: Add unit tests for all components"
-git commit -m "docs: Update README with project documentation"
-```
-
 ### Приклад вихідного XML після XSL трансформації
 
 Після виконання XSL трансформації, XML буде перетворено на структуру з групуванням за типом дорогоцінності:
@@ -210,7 +188,3 @@ git commit -m "docs: Update README with project documentation"
     </SemiPreciousGems>
 </GemsByPreciousness>
 ```
-
-## Автор
-
-Лабораторна робота 2 - Обробка XML документів
