@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Gem xmlns="http://www.diamondfund.ua/gems"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.diamondfund.ua/gems ../xsd/gems.xsd">
+    <gem id="gem001">
+        <name>Diamond</name>
+        <preciousness>precious</preciousness>
+        <origin>South Africa</origin>
+        <visualParameters>
+            <color>white</color>
+            <transparency>95</transparency>
+            <facets>12</facets>
+        </visualParameters>
+        <value>2.5</value>
+    </gem>
+    <gem id="gem002">
+        <name>Ruby</name>
+        <preciousness>precious</preciousness>
+        <origin>Myanmar</origin>
+        <visualParameters>
+            <color>red</color>
+            <transparency>85</transparency>
+            <facets>8</facets>
+        </visualParameters>
+        <value>1.8</value>
+    </gem>
+    <gem id="gem003">
+        <name>Emerald</name>
+        <preciousness>precious</preciousness>
+        <origin>Colombia</origin>
+        <visualParameters>
+            <color>green</color>
+            <transparency>75</transparency>
+            <facets>10</facets>
+        </visualParameters>
+        <value>3.2</value>
+    </gem>
+    <gem id="gem004">
+        <name>Amethyst</name>
+        <preciousness>semi-precious</preciousness>
+        <origin>Brazil</origin>
+        <visualParameters>
+            <color>purple</color>
+            <transparency>80</transparency>
+            <facets>6</facets>
+        </visualParameters>
+        <value>5.0</value>
+    </gem>
+    <gem id="gem005">
+        <name>Topaz</name>
+        <preciousness>semi-precious</preciousness>
+        <origin>Russia</origin>
+        <visualParameters>
+            <color>yellow</color>
+            <color>blue</color>
+            <transparency>88</transparency>
+            <facets>9</facets>
+        </visualParameters>
+        <value>4.5</value>
+    </gem>
+    <gem id="gem006">
+        <name>Sapphire</name>
+        <preciousness>precious</preciousness>
+        <origin>Sri Lanka</origin>
+        <visualParameters>
+            <color>blue</color>
+            <transparency>90</transparency>
+            <facets>14</facets>
+        </visualParameters>
+        <value>2.1</value>
+    </gem>
+    <gem id="gem007">
+        <name>Garnet</name>
+        <preciousness>semi-precious</preciousness>
+        <origin>India</origin>
+        <visualParameters>
+            <color>red</color>
+            <transparency>70</transparency>
+            <facets>5</facets>
+        </visualParameters>
+        <value>3.8</value>
+    </gem>
+</Gem>
+
