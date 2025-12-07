@@ -20,5 +20,17 @@ class XmlValidatorTest {
         boolean isValid = validator.validate(VALID_XML, "nonexistent.xsd");
         assertFalse(isValid, "Validation should fail with invalid XSD path");
     }
+
+    @Test
+    void testValidateWithNonExistentXmlFile() {
+        boolean isValid = validator.validate("nonexistent.xml", XSD_FILE);
+        assertFalse(isValid, "Validation should fail with non-existent XML file");
+    }
+
+    @Test
+    void testValidateWithInvalidXmlPath() {
+        boolean isValid = validator.validate("/invalid/path/to/file.xml", XSD_FILE);
+        assertFalse(isValid, "Validation should fail with invalid XML path");
+    }
 }
 

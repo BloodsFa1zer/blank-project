@@ -71,7 +71,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
             </plugin>
-            <!-- JAXB Code Generation Plugin -->
+            <!-- JAXB Code Generation Plugin - Disabled to avoid conflict with manual model classes -->
+            <!--
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
@@ -92,6 +93,7 @@
                     <clearOutputDir>false</clearOutputDir>
                 </configuration>
             </plugin>
+            -->
         </plugins>
     </build>
 </project>

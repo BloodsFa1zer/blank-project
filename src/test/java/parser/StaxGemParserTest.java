@@ -51,5 +51,19 @@ class StaxGemParserTest {
         assertEquals(saxGems.size(), domGems.size());
         assertEquals(domGems.size(), staxGems.size());
     }
+
+    @Test
+    void testParseWithNonExistentFile() {
+        assertThrows(Exception.class, () -> {
+            parser.parse("nonexistent.xml");
+        });
+    }
+
+    @Test
+    void testParseWithInvalidPath() {
+        assertThrows(Exception.class, () -> {
+            parser.parse("/invalid/path/to/file.xml");
+        });
+    }
 }
 

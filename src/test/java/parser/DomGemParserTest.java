@@ -41,5 +41,19 @@ class DomGemParserTest {
         assertFalse(gem.getVisualParameters().isEmpty());
         assertTrue(gem.getVisualParameters().get(0).getColors().size() >= 1);
     }
+
+    @Test
+    void testParseWithNonExistentFile() {
+        assertThrows(Exception.class, () -> {
+            parser.parse("nonexistent.xml");
+        });
+    }
+
+    @Test
+    void testParseWithInvalidPath() {
+        assertThrows(Exception.class, () -> {
+            parser.parse("/invalid/path/to/file.xml");
+        });
+    }
 }
 

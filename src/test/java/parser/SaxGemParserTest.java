@@ -44,5 +44,19 @@ class SaxGemParserTest {
         assertEquals("Diamond", gem.getName());
         assertEquals(Preciousness.PRECIOUS, gem.getPreciousness());
     }
+
+    @Test
+    void testParseWithNonExistentFile() {
+        assertThrows(Exception.class, () -> {
+            parser.parse("nonexistent.xml");
+        });
+    }
+
+    @Test
+    void testParseWithInvalidPath() {
+        assertThrows(Exception.class, () -> {
+            parser.parse("/invalid/path/to/file.xml");
+        });
+    }
 }
 

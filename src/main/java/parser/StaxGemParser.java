@@ -31,8 +31,10 @@ public class StaxGemParser implements GemParser {
         boolean inVisualParameters = false;
         String currentElement = null;
         
-        try (FileInputStream inputStream = new FileInputStream(xmlFilePath);
-             XMLStreamReader reader = factory.createXMLStreamReader(inputStream)) {
+        FileInputStream inputStream = new FileInputStream(xmlFilePath);
+        XMLStreamReader reader = null;
+        try {
+            reader = factory.createXMLStreamReader(inputStream);
         
             while (reader.hasNext()) {
                 int event = reader.next();
@@ -130,6 +132,21 @@ public class StaxGemParser implements GemParser {
                         
                         currentElement = null;
                         break;
+                }
+            }
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                    logger.warn("Error closing XMLStreamReader", e);
+                }
+            }
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (Exception e) {
+                    logger.warn("Error closing FileInputStream", e);
                 }
             }
         }

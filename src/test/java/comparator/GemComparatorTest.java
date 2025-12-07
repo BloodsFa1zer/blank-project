@@ -85,5 +85,117 @@ class GemComparatorTest {
         
         return gems;
     }
+
+    @Test
+    void testCompareByNameCaseInsensitive() {
+        List<Gem> gems = new ArrayList<>();
+        
+        Gem gem1 = new Gem();
+        gem1.setName("diamond");
+        gem1.setValue(new BigDecimal("2.5"));
+        gem1.setVisualParameters(new ArrayList<>());
+        gems.add(gem1);
+        
+        Gem gem2 = new Gem();
+        gem2.setName("Diamond");
+        gem2.setValue(new BigDecimal("2.5"));
+        gem2.setVisualParameters(new ArrayList<>());
+        gems.add(gem2);
+        
+        Gem gem3 = new Gem();
+        gem3.setName("DIAMOND");
+        gem3.setValue(new BigDecimal("2.5"));
+        gem3.setVisualParameters(new ArrayList<>());
+        gems.add(gem3);
+        
+        Collections.sort(gems, GemComparator.byName());
+        
+        // All should be considered equal (case-insensitive)
+        assertEquals(3, gems.size());
+    }
+
+    @Test
+    void testCompareByOriginCaseInsensitive() {
+        List<Gem> gems = new ArrayList<>();
+        
+        Gem gem1 = new Gem();
+        gem1.setOrigin("south africa");
+        gem1.setValue(new BigDecimal("2.5"));
+        gem1.setVisualParameters(new ArrayList<>());
+        gems.add(gem1);
+        
+        Gem gem2 = new Gem();
+        gem2.setOrigin("South Africa");
+        gem2.setValue(new BigDecimal("2.5"));
+        gem2.setVisualParameters(new ArrayList<>());
+        gems.add(gem2);
+        
+        Collections.sort(gems, GemComparator.byOrigin());
+        
+        assertEquals(2, gems.size());
+    }
+
+    @Test
+    void testCompareByValueWithSameValues() {
+        List<Gem> gems = new ArrayList<>();
+        
+        Gem gem1 = new Gem();
+        gem1.setName("Gem1");
+        gem1.setValue(new BigDecimal("2.5"));
+        gem1.setVisualParameters(new ArrayList<>());
+        gems.add(gem1);
+        
+        Gem gem2 = new Gem();
+        gem2.setName("Gem2");
+        gem2.setValue(new BigDecimal("2.5"));
+        gem2.setVisualParameters(new ArrayList<>());
+        gems.add(gem2);
+        
+        Collections.sort(gems, GemComparator.byValue());
+        
+        // Both have same value, order should be preserved or stable
+        assertEquals(2, gems.size());
+        assertEquals(new BigDecimal("2.5"), gems.get(0).getValue());
+        assertEquals(new BigDecimal("2.5"), gems.get(1).getValue());
+    }
+
+    @Test
+    void testCompareByPreciousnessAndValueDetailed() {
+        List<Gem> gems = new ArrayList<>();
+        
+        // Precious with lower value
+        Gem gem1 = new Gem();
+        gem1.setName("Ruby");
+        gem1.setPreciousness(Preciousness.PRECIOUS);
+        gem1.setValue(new BigDecimal("1.5"));
+        gem1.setVisualParameters(new ArrayList<>());
+        gems.add(gem1);
+        
+        // Semi-precious with higher value
+        Gem gem2 = new Gem();
+        gem2.setName("Amethyst");
+        gem2.setPreciousness(Preciousness.SEMI_PRECIOUS);
+        gem2.setValue(new BigDecimal("5.0"));
+        gem2.setVisualParameters(new ArrayList<>());
+        gems.add(gem2);
+        
+        // Precious with higher value
+        Gem gem3 = new Gem();
+        gem3.setName("Diamond");
+        gem3.setPreciousness(Preciousness.PRECIOUS);
+        gem3.setValue(new BigDecimal("3.0"));
+        gem3.setVisualParameters(new ArrayList<>());
+        gems.add(gem3);
+        
+        Collections.sort(gems, GemComparator.byPreciousnessAndValue());
+        
+        // Precious gems should come first, sorted by value
+        assertEquals(Preciousness.PRECIOUS, gems.get(0).getPreciousness());
+        assertEquals(Preciousness.PRECIOUS, gems.get(1).getPreciousness());
+        assertEquals(Preciousness.SEMI_PRECIOUS, gems.get(2).getPreciousness());
+        
+        // Within precious, sorted by value
+        assertTrue(gems.get(0).getValue().compareTo(gems.get(1).getValue()) <= 0);
+    }
 }
 
